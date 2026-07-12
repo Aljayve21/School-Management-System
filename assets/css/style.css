@@ -1,0 +1,196 @@
+:root {
+    --sidebar-width: 260px;
+}
+
+* { font-family: 'Inter', sans-serif; }
+
+body {
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1040;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+/* Topbar */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.topbar-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+.topbar-user {
+    white-space: nowrap;
+}
+
+/* Sidebar nav links */
+.sidebar .nav-link {
+    border-radius: 8px;
+    margin-bottom: 2px;
+    padding: 10px 15px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.sidebar .nav-link:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.sidebar .nav-link.active {
+    font-weight: 600;
+}
+
+/* Cards */
+.card {
+    border-radius: 12px;
+}
+
+/* Tables */
+.table th {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6c757d;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* Forms */
+.form-label {
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+}
+
+/* Modals */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Page headers that stack on mobile */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.page-header h5 {
+    margin-bottom: 0;
+}
+
+/* Sidebar toggle button always visible on mobile */
+.sidebar-toggle {
+    display: none;
+}
+
+/* Stat card responsive */
+.stat-card h2 {
+    font-size: 2rem;
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .sidebar-toggle {
+        display: inline-flex;
+    }
+}
+
+@media (min-width: 992px) {
+    .sidebar {
+        transform: translateX(0) !important;
+    }
+}
+
+/* Small screens */
+@media (max-width: 575.98px) {
+    .page-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .page-header .btn {
+        width: 100%;
+    }
+    .topbar .topbar-user .badge {
+        display: none;
+    }
+    .stat-card h2 {
+        font-size: 1.5rem;
+    }
+    .stat-card h6 {
+        font-size: 0.7rem;
+    }
+}
+
+/* Modal fullscreen on mobile */
+@media (max-width: 575.98px) {
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+    .modal-body {
+        padding: 1rem;
+    }
+}
